@@ -1,0 +1,229 @@
+version: 2
+
+models:
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # stg_devolucoes
+  # ───────────────────────────────────────────────────────────────────────────
+  - name: stg_devolucoes
+    description: >
+      Devolucoes limpas e padronizadas a partir de desafio2_devolucoes.
+      Strings com trim e normalização de capitalização, datas tipadas como DATE.
+      Materializado como VIEW — reflete sempre o estado atual da fonte.
+    columns:
+      - name: devolucao_id
+        description: "Chave primária da devolucao, tipado como INTERGER."
+        tests:  
+          - not_null
+          - unique
+
+      - name: pedido_id
+        description: "Identificador do pedido, tipado como INTEGER"
+        tests:
+          - not_null
+
+      - name: data_devolucao
+        description: "Data da devolução, tipada como DATE."
+        tests:
+          - not_null
+
+      - name: cliente_id
+        description: "Identificador do cliente, tipado como INTEGER"
+        tests:
+          - not_null
+
+      - name: produto_id
+        description: "Identificador do produto, tipado como INTEGER"
+        tests:
+          - not_null
+
+      - name: quantidade_devolvida
+        description: "Quantidade de produtos devolvidos, tipada como INTEGER."
+        tests:
+          - not_null
+
+      - name: valor_devolvido
+        description: "Valor total devolvido, tipado como NUMERIC."
+        tests:
+          - not_null
+
+      - name: motivo_devolucao
+        description: "Motivo da devolução, tipado como TEXT."
+        tests:
+          - not_null
+
+      - name: status_devolucao
+        description: "Status atual da devolução, tipado como TEXT: 'Concluída','Em análise'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Concluída','Em análise']
+            
+  # ───────────────────────────────────────────────────────────────────────────
+  # stg_vendas
+  # ───────────────────────────────────────────────────────────────────────────
+  - name: stg_vendas
+    description: >
+      Vendas limpas e padronizadas a partir de desafio2_vendas.
+      Strings com trim e normalização de capitalização, datas tipadas como DATE.
+      Materializado como VIEW — reflete sempre o estado atual da fonte.
+    columns:
+      - name: pedido_id
+        description: "Chave primária da venda, tipado como INTERGER."
+        tests:  
+          - not_null
+          - unique
+      
+      - name: data_pedido
+        description: "Data do pedido, tipada como DATE."
+        tests:
+          - not_null
+
+      - name: cliente_id
+        description: "Identificador do cliente, tipado como INTERGER."
+        tests:  
+          - not_null
+
+      - name: produto_id
+        description: "Identificador do produto, tipado como INTERGER."
+        tests:  
+          - not_null
+      
+      - name: produto
+        description: "Nome do produto, tipado como TEXT."
+        tests:  
+          - not_null
+
+      - name: categoria
+        description: "Categoria do produto, tipado como TEXT."
+        tests:  
+          - not_null
+
+      - name: marca
+        description: "Marca do produto, tipado como TEXT."
+        tests:  
+          - not_null
+
+      - name: quantidade
+        description: "Quantidade de produtos vendidos, tipada como INTEGER."
+        tests:  
+          - not_null
+
+      - name: preco_unitario
+        description: "Preço unitário do produto, tipado como NUMERIC."
+        tests:  
+          - not_null
+
+      - name: desconto
+        description: "Desconto aplicado ao produto, tipado como NUMERIC."
+        tests:  
+          - not_null
+
+      - name: frete
+        description: "Frete aplicado ao produto, tipado como NUMERIC."
+        tests:  
+          - not_null
+
+      - name: valor_total
+        description: "Valor total do produto, tipado como NUMERIC."
+        tests:  
+          - not_null
+
+      - name: canal_venda
+        description: "Canal de venda, tipado como TEXT: 'App', 'Marketplace', 'Site'"
+        tests:  
+          - not_null
+          - accepted_values:
+              values: ['App','Marketplace', 'Site']
+
+      - name: forma_pagamento
+        description: "Forma de pagamento, tipado como TEXT: 'Boleto', 'Cartão de Crédito', 'Pix'"
+        tests:  
+          - not_null
+          - accepted_values:
+              values: ['Boleto','Cartão de Crédito','Pix']
+
+      - name: cidade
+        description: "Cidade, tipado como TEXT."
+        tests:  
+          - not_null
+
+      - name: estado
+        description: "Sigla do estado (UF) em maiúsculas e sem espaços. Sempre dois caracteres alfabéticos."
+        tests:  
+          - not_null
+          - accepted_values:
+              values: ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA',
+                       'MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN',
+                       'RS','RO','RR','SC','SP','SE','TO']
+
+      - name: status_pedido
+        description: "Status do pedido, tipado como TEXT: 'Cancelado', 'Faturado', 'Entregue'"
+        tests:  
+          - not_null
+          - accepted_values:
+              values: ['Cancelado','Faturado','Entregue']
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # stg_estoque
+  # ───────────────────────────────────────────────────────────────────────────
+  - name: stg_estoque
+    description: >
+      Tabela de Estoque limpo e padronizado a partir de desafio2_estoque.
+      Strings com trim e normalização de capitalização, datas tipadas como DATE.
+      Materializado como VIEW — reflete sempre o estado atual da fonte.
+    columns:
+      - name: produto_id
+        description: "Chave primária do produto, tipado como INTERGER."
+        tests:  
+          - not_null
+          - unique
+      
+      - name: produto
+        description: "Nome do produto, tipado como TEXT."
+        tests:  
+          - not_null
+
+      - name: categoria
+        description: "Categoria do produto, tipado como TEXT."
+        tests:  
+          - not_null
+
+      - name: marca
+        description: "Marca do produto, tipado como TEXT."
+        tests:  
+          - not_null
+      
+      - name: fornecedor
+        description: "Nome do fornecedor, tipado como TEXT."
+        tests:  
+          - not_null
+
+      - name: estoque_inicial
+        description: "Estoque inicial, tipado como INTEGER."
+        tests:  
+          - not_null
+
+      - name: estoque_atual
+        description: "Estoque atual, tipado como INTEGER."
+        tests:  
+          - not_null
+
+      - name: estoque_minimo
+        description: "Estoque mínimo, tipado como INTEGER."
+        tests:  
+          - not_null
+
+      - name: custo_unitario
+        description: "Custo unitário do produto, tipado como NUMERIC."
+        tests:  
+          - not_null
+
+      - name: centro_distribuicao
+        description: "Centro de distribuição, tipado como TEXT."
+        tests:  
+          - not_null
+
+   
+
+

@@ -1,0 +1,11 @@
+[0m11:52:25.538152 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000014828136510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000014824E5B750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001482A4F3B10>]}
+
+
+============================== 11:52:25.654001 | 9bcc4bb0-8a68-46b3-a37f-f9704b49280b ==============================
+[0m11:52:25.654001 [info ] [MainThread]: Running with dbt=1.11.12
+[0m11:52:25.654538 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\Gabriel Alves\\.dbt', 'use_colors': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt init', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m11:52:44.834189 [info ] [MainThread]: A project called dw_bootcamp already exists here.
+[0m11:52:44.835162 [debug] [MainThread]: Command `dbt init` succeeded at 11:52:44.835050 after 19.41 seconds
+[0m11:52:44.835447 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001482A5CCD60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001482A583AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001482A538D10>]}
+[0m11:52:44.835749 [debug] [MainThread]: Flushing usage events
+[0m11:52:45.427786 [debug] [MainThread]: An error was encountered while trying to flush usage events
